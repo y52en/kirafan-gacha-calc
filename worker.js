@@ -15,14 +15,14 @@ function calc(mx_retry, p1, p2, n0, n2, pk1, pk2) {
         dp[0][0] = 1;
         //eslint-disable-next-line
         for (let _ of range(n0)) {
-            let dp2 = Multi_array(mx_retry + 1, dp[0].length + 10);
+            let dp2 = Multi_array(mx_retry + 1, Math.min(dp[0].length + 10,6+1));
             for (let i of range(mx_retry + 1)) {
                 for (let j of range(dp[0].length)) {
                     for (let k of range(10 + 1)) {
                         if (i !== mx_retry && k === 0) {
                             dp[i + 1][j] += dp[i][j] * pk1[0];
                         } else {
-                            dp2[i][j + k] += dp[i][j] * pk1[k];
+                            dp2[i][Math.min(j + k,6)] += dp[i][j] * pk1[k];
                         }
                     }
                 }
