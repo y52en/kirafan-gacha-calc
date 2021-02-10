@@ -1,25 +1,45 @@
-import init from "./wasm/kirafan_gacha_calc.js";
-import * as gacha_calc from "./wasm/kirafan_gacha_calc.js";
+function calc(mx_retry, p1, p2, n0, n2, pk1, pk2) {
+    // const pk1 = array_Binomial_Distribution.bind(this)(
+    //     iter_array(0, 10 + 1),
+    //     10,
+    //     p1
+    // );
+    // const pk2 = array_Binomial_Distribution.bind(this)(
+    //     iter_array(0, n2 + 1),
+    //     n2,
+    //     p2
+    // );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 self.addEventListener('message', async function (e) {
     await init()
     // let [mx_retry, p1, p2, n0, n2] = e.data
     self.postMessage(gacha_calc.calc(...e.data))
 =======
+=======
+>>>>>>> parent of 3967604... 計算処理wo
     function f_multi_retry(mx_retry) {
         let dp = Multi_array(mx_retry + 1, 1);
         dp[0][0] = 1;
         //eslint-disable-next-line
         for (let _ of range(n0)) {
+<<<<<<< HEAD
             let dp2 = Multi_array(mx_retry + 1, dp[0].length + 10);
+=======
+            let dp2 = Multi_array(mx_retry + 1, Math.min(dp[0].length + 10,6+1));
+>>>>>>> parent of 3967604... 計算処理wo
             for (let i of range(mx_retry + 1)) {
                 for (let j of range(dp[0].length)) {
                     for (let k of range(10 + 1)) {
                         if (i !== mx_retry && k === 0) {
                             dp[i + 1][j] += dp[i][j] * pk1[0];
                         } else {
+<<<<<<< HEAD
                             dp2[i][j + k] += dp[i][j] * pk1[k];
+=======
+                            dp2[i][Math.min(j + k,6)] += dp[i][j] * pk1[k];
+>>>>>>> parent of 3967604... 計算処理wo
                         }
                     }
                 }
@@ -97,5 +117,8 @@ self.addEventListener('message', function (e) {
     //処理結果を送信
     // console.log(2);
     self.postMessage(calc(...e.data));
+<<<<<<< HEAD
 >>>>>>> parent of d83b1bc... 計算処理最適化
+=======
+>>>>>>> parent of 3967604... 計算処理wo
 }, false);
